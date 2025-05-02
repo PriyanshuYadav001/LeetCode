@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Move Solution to LeetCode Folder",
+        "type": "shell",
+        "command": "mv",
+        "args": [
+          "${workspaceFolder}/LeetCode/Problems/*",
+          "${workspaceFolder}/LeetCode_Solutions/"
+        ],
+        "problemMatcher": [],
+        "isBackground": true
+      }
+    ]
+  }
+  
