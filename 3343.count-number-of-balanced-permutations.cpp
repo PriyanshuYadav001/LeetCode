@@ -16,34 +16,39 @@ public:
         if(b==0) return 1;
 
         long long half=findPow(a,b/2);
-        long long res=(half*half)%M;
+        long long r=(half*half)%M;
 
-        if(b%2==1) res=(res*a)%M;
+        if(b%2==1) r=(r*a)%M;
 
-        return res;
+        return r;
     }
 
-    long long solve(int digit, int evenIndexDigitsCount, int currSum, vector<int>& freq, vector<long long>& fermatFact) {
-    if (digit == 10) {
-        if (currSum == totalDigitSum / 2 && evenIndexDigitsCount == (n + 1) / 2) {
-            return totalPermPossible;
+    long long solve(int digit,int evenIndexDigitsCount,int currSum,vector<int>& freq,vector<long long>& fermatFact, vector<vector<vector<int>>>& dp) {
+    if(digit==10){
+        if(currSum==digitSum/2 && evenIndexDigitsCount==(n+1)/2){
+            return res;
         }
         return 0;
     }
 
+    if(dp[digit][evenIndexDigitsCount][currSum]!=-1){
+        return dp[digit][evenIndexDigitsCount][currSum];
+    }
+    
+
     long long ways=0;
 
     for (int count=0;count<=min(freq[digit],(n+1)/2-evenIndexDigitsCount);count++){
-        int evenPosCount = count;
-        int oddPosCount = freq[digit] - count;
+        int evenPosCount=count;
+        int oddPosCount=freq[digit]-count;
 
         long long div=(fermatFact[evenPosCount]* fermatFact[oddPosCount])%M;
-        long long val = solve(digit+1, evenIndexDigitsCount+evenPosCount, currSum + digit * count, freq,fermatFact);
+        long long val = solve(digit+1, evenIndexDigitsCount+evenPosCount, currSum + digit * count, freq,fermatFact,dp);
 
         ways = (ways + (val * div) % M) % M;
     }
 
-    return ways;
+    return dp[digit][evenIndexDigitsCount][currSum]=ways;
 }
 
     int countBalancedPermutations(string num) {
@@ -71,9 +76,12 @@ public:
         int digit=0;
         int evenCount=0;
         int currSum=0;
+
+        vector<vector<vector<int>>> dp(10,vector<vector<int>>((n+1)/2+1, vector<int>(digitSum+1,-1)));
+
         res=(1LL*fact[n-n/2]*fact[n/2])%M;
 
-        return solve(digit,evenCount,currSum,freq,fermatFact);
+        return solve(digit,evenCount,currSum,freq,fermatFact,dp);
     }
 };
 // @lc code=end
