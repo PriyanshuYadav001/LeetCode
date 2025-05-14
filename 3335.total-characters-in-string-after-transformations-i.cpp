@@ -12,7 +12,6 @@ public:
         int n=s.length();
         vector<int>mp(26,0);
         for(char &ch:s) mp[ch-'a']++;
-
         for(int i=0;i<t;i++){
             vector<int>temp(26,0);
             for(int i=0;i<26;i++){
