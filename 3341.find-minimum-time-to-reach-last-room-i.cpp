@@ -31,7 +31,6 @@ class Solution {
                     if(dx<0 || dy<0 || dx>n-1 || dy>m-1) continue;
     
                     int t=max(time,moveTime[dx][dy])+1;
-    
                     if(t<res[dx][dy]){
                         res[dx][dy]=t;
                         pq.push({-t,{dx,dy}});

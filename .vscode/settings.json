@@ -1,7 +1,12 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "C_Cpp.errorSquiggles": "disabled"
 =======
     "debug-leetcode.cppCompiler": "clang"
 >>>>>>> fe94aa0 (3335. solution)
+=======
+    "debug-leetcode.cppCompiler": "clang",
+    "C_Cpp.errorSquiggles": "disabled"
+>>>>>>> 0450abe (Your first commit)
 }
