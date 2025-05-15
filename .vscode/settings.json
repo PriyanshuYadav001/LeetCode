@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
     "C_Cpp.errorSquiggles": "disabled"
+=======
+    "debug-leetcode.cppCompiler": "clang"
+>>>>>>> fe94aa0 (3335. solution)
 }
