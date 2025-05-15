@@ -7,8 +7,12 @@
 // @lc code=start
 class Solution {
 public:
-    int mySqrt(int x) {
-        
+    long long mySqrt(long long x) {
+        long long res=0;
+        for(long long i=0;i*i<=x;i++){
+            if(i*i<=x) res=i;
+        }
+        return res;
     }
 };
 // @lc code=end
