@@ -8,18 +8,23 @@
 class Solution {
 public:
     int countCharacters(vector<string>& words, string chars) {
-        unordered_set<char> chr;
-        for(char c:chars) chr.insert(c);
-        int res=0;
+        vector<string> arr;
+        unordered_map<char,int> mp;
+        for(char c:chars) mp[c]++;
+
         for(string word:words){
-            int match=0;
-            for(char x:word){
-                if(chr.find(x)!=chr.end()){
-                    match++;
+            string str="";
+            for(char c:word){
+                if(mp[c]>0){
+                    str+=c;
+                    mp[c]--;
                 }
             }
-            if(match==word.size()) res+=match;
+            for(char c:str) mp[c]++;
+            if(str==word) arr.push_back(word);
         }
+        int res=0;
+        for(string s:arr) res+=s.size();
         return res;
     }
 };

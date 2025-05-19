@@ -57,16 +57,17 @@
 class Solution {
 public:
     bool carPooling(vector<vector<int>>& trips, int capacity) {
-        vector<int> cap(1001,0);
-        for(auto trip:trips){
-            for(int i=trip[1];i<=trip[2];i++){
-                cap[i]+=trip[0];
+        vector<int> persons(1001,0);
+        for(auto t:trips){
+            for(int i=t[1];i<t[2];i++){
+                persons[i]+=t[0];
             }
         }
-        for(int i=0;i<cap.size();i++){
-            if(cap[i]>capacity) return false;
+        for(auto p:persons){
+            if(p>capacity) return false;
         }
         return true;
+
     }
 };
 // @lc code=end
