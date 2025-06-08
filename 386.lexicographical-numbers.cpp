@@ -39,18 +39,21 @@
 // @lc code=start
 class Solution {
 public:
-    void dfs(int curr, int n, vector<int>& res){
-        if(curr>n) return;
-        res.push_back(curr);
-        for(int i=0;i<=9;i++){
-            dfs(curr*10+i,n,res);
-        }
+    void backtrack(vector<int>& res, int n, int num) {
+        if (num > n)
+            return;
+        res.push_back(num);
+        num *= 10;
+        for (int i = 0; i < 10; i++)
+            backtrack(res, n, num + i);
     }
+
     vector<int> lexicalOrder(int n) {
         vector<int> res;
-        for(int i=1;i<=9;i++){
-            dfs(i,n,res);
-        }
+        if (n == 1)
+            return {1};
+        for (int i = 1; i < 10; i++)
+            backtrack(res, n, i);
         return res;
     }
 };
