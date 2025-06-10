@@ -14,12 +14,10 @@ public:
         for (char c : s)
             mp[c]++;
         for (auto m : mp) {
-            if (m.second % 2 == 0)
-                even = min(even, m.second);
-            else
-                odd = max(odd, m.second);
+            if (m.second % 2 == 0) even = min(even, m.second);
+            else odd = max(odd, m.second);
         }
-        return odd - even;
+        return odd-even;
     }
 };
 // @lc code=end
