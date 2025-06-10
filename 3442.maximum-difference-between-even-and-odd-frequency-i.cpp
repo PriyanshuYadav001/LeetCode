@@ -18,7 +18,6 @@ public:
             else odd = max(odd, m.second);
         }
         return odd-even;
-
     }
 };
 // @lc code=end
