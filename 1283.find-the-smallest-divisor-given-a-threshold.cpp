@@ -14,7 +14,14 @@ public:
         }
         int res=0;
         for(int i=maxVal;i>=1;i--){
-            
+            int sum=0;
+            for(int n:nums){
+                sum+=ceil((double)n/i);
+            }
+            if(sum<=threshold){
+                res=i;
+                break;
+            }   
         }
     }
 };
