@@ -44,27 +44,26 @@
 
 // @lc code=start
 class Solution {
-public: 
-    int count(int n,long long pre1,long long pre2){
-        int steps=0;
-        while(pre1<=n){
-            steps+=min((long long)n+1,pre2)-pre1;
-            pre1*=10;
-            pre2*=10;
+public:
+    int count(int n, long long pre1, long long pre2) {
+        int steps = 0;
+        while (pre1 <= n) {
+            steps += min((long long)n + 1, pre2) - pre1;
+            pre1 *= 10;
+            pre2 *= 10;
         }
         return steps;
     }
     int findKthNumber(int n, int k) {
-        int curr=1;
+        int curr = 1;
         k--;
-        while(k>0){
-            int nums=count(n,curr,curr+1);
-            if(nums<=k){
+        while (k > 0) {
+            int nums = count(n, curr, curr + 1);
+            if (nums <= k) {
                 curr++;
-                k-=nums;
-            }
-            else{
-                curr*=10;
+                k -= nums;
+            } else {
+                curr *= 10;
                 k--;
             }
         }
