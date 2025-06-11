@@ -11,9 +11,8 @@ public:
         vector<string> arr;
         stringstream ss(s);
         string word;
-        while(ss>>word){
+        while(ss>>word) 
             arr.push_back(word);
-        }
 
         if(pattern.size()!=arr.size()) return false;
         unordered_set<char> chr;
